@@ -1,5 +1,5 @@
 // ============================================================================
-// build_slides.js - generates docs/presentation/RV32I_Presentation.pptx
+// build_slides.js - generates docs/presentation/Presentation_Team_Black_Coffee.pptx
 // Numbers come from docs/results.json. Speaker notes are included on every
 // slide (View > Notes in PowerPoint) to help with the demo / viva.
 // Run: NODE_PATH=../report_tools_node/node_modules node tools/build_slides.js <pptx-skill-dir>
@@ -271,7 +271,7 @@ s.addText([
 s.addNotes("Summarise and invite questions. Typical viva questions: why is LW the slowest? Why is x0 hard-wired? What happens on an unsupported instruction? How does the B-type immediate work?");
 
 (async () => {
-  const file = path.join(OUT, "RV32I_Presentation.pptx");
+  const file = path.join(OUT, "Presentation_Team_Black_Coffee.pptx");
   await pres.writeFile({ fileName: file });
   await applyTheme(file, THEME);
   console.log("wrote", file);

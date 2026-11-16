@@ -1,7 +1,7 @@
 # ============================================================================
 # vivado_build.tcl - Vivado batch flow for the Basys-3 board (run on a lab PC)
 #
-#   cd rv32i_single_cycle
+#   cd Single-Cycle-RV32I-Processor
 #   vivado -mode batch -source fpga/vivado_build.tcl
 #
 # Produces in fpga/vivado_out/:

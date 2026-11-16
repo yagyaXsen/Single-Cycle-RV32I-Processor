@@ -21,8 +21,8 @@ reference model and synthesized for FPGA.
 | | |
 |---|---|
 | **IEEE project report** | [docs/report/IEEE_Report_Team_Black_Coffee.pdf](docs/report/IEEE_Report_Team_Black_Coffee.pdf) |
-| Detailed technical report | [docs/report/RV32I_Project_Report.pdf](docs/report/RV32I_Project_Report.pdf) |
-| Presentation | [docs/presentation/RV32I_Presentation.pdf](docs/presentation/RV32I_Presentation.pdf) |
+| Detailed technical report | [docs/report/Detailed_Report_Team_Black_Coffee.pdf](docs/report/Detailed_Report_Team_Black_Coffee.pdf) |
+| Presentation | [docs/presentation/Presentation_Team_Black_Coffee.pdf](docs/presentation/Presentation_Team_Black_Coffee.pdf) |
 | **Prototype demo video** | _link will be added after upload_ |
 
 ---
@@ -41,8 +41,8 @@ reference model and synthesized for FPGA.
 | Comparison against a baseline | `docs/perf/performance.md`, report Chapter 8 (multi-cycle baseline) |
 | Block diagram | `docs/diagrams/datapath.png` (+ hierarchy, formats, verification flow) |
 | FPGA implementation (if available) | `fpga/fpga_top.v`, `fpga/basys3.xdc`, `fpga/vivado_build.tcl` |
-| **Final technical report** | `docs/report/RV32I_Project_Report.docx` and `.pdf` |
-| **Presentation for the live demo** | `docs/presentation/RV32I_Presentation.pptx` (with speaker notes) |
+| **Final technical report** | `docs/report/Detailed_Report_Team_Black_Coffee.docx` and `.pdf` |
+| **Presentation for the live demo** | `docs/presentation/Presentation_Team_Black_Coffee.pptx` (with speaker notes) |
 
 ## Team Black Coffee (Group B)
 
@@ -63,7 +63,7 @@ Details of each member's work: report Chapter 11.
 ## Folder structure
 
 ```
-rv32i_single_cycle/
+Single-Cycle-RV32I-Processor/
 ├── rtl/            synthesizable Verilog (the processor)
 ├── tb/             testbenches
 ├── programs/       RISC-V assembly test programs (.s)

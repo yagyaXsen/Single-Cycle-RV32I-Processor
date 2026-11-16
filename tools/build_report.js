@@ -1,5 +1,5 @@
 // ============================================================================
-// build_report.js - generates docs/report/RV32I_Project_Report.docx
+// build_report.js - generates docs/report/Detailed_Report_Team_Black_Coffee.docx
 // All numbers come from docs/results.json (made by tools/collect_results.py).
 // Run:  NODE_PATH=../report_tools_node/node_modules node tools/build_report.js
 // ============================================================================
@@ -488,7 +488,7 @@ C_.push(
   ], [2, 2.4, 5.6]),
   P("Running `full_test` at slow speed, the PC can be seen stepping on the LEDs (SW1 = 1); at the end the LEDs show **a0 = 62 = 0000 0000 0011 1110₂** (SW1 = 0). Note that the 100 MHz board clock is above the expected Fmax of the single-cycle path; for full-speed operation the clock should be reduced to about 40 MHz with a Clocking Wizard (MMCM), whereas slow-step mode is always safe because the clock-enable keeps the CPU path a multi-cycle path."),
   H2("9.2 Vivado flow (lab PC)"),
-  ...CODE(["cd rv32i_single_cycle", "./scripts/run_all.sh                          # creates build/full_test.hex", "vivado -mode batch -source fpga/vivado_build.tcl", "# reports: fpga/vivado_out/utilization.rpt, timing.rpt, power.rpt", "# bitstream: fpga/vivado_out/fpga_top.bit  (program with Hardware Manager)"]),
+  ...CODE(["cd Single-Cycle-RV32I-Processor", "./scripts/run_all.sh                          # creates build/full_test.hex", "vivado -mode batch -source fpga/vivado_build.tcl", "# reports: fpga/vivado_out/utilization.rpt, timing.rpt, power.rpt", "# bitstream: fpga/vivado_out/fpga_top.bit  (program with Hardware Manager)"]),
   H2("9.3 Live demonstration procedure"),
   N("Run `./scripts/run_all.sh` — all unit tests, the seven programs and the stall tests print PASS."),
   N("Open a waveform: `surfer sim/cpu_full_test.vcd` (or `gtkwave sim/full_test.gtkw`) and walk through one LW, one SW and one taken branch."),
@@ -580,7 +580,7 @@ C_.push(
     "brew install icarus-verilog yosys surfer",
     "python3 -m venv .venv && .venv/bin/pip install matplotlib yowasp-nextpnr-ecp5",
     "",
-    "cd rv32i_single_cycle",
+    "cd Single-Cycle-RV32I-Processor",
     "./scripts/run_all.sh          # assemble, golden model, all simulations   -> sim/",
     "./scripts/mutation_test.sh    # testbench quality (mutation score)        -> sim/mutation_results.txt",
     "./scripts/make_waveforms.sh   # waveform images                           -> docs/waveforms/",
@@ -633,7 +633,7 @@ const doc = new Document({
 });
 
 Packer.toBuffer(doc).then((buf) => {
-  const out = path.join(OUTDIR, "RV32I_Project_Report.docx");
+  const out = path.join(OUTDIR, "Detailed_Report_Team_Black_Coffee.docx");
   fs.writeFileSync(out, buf);
   console.log("wrote", out, `(${figNo} figures, ${tabNo} tables)`);
 });

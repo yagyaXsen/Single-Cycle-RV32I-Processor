@@ -5,8 +5,8 @@ set -e
 cd "$(dirname "$0")/.."
 SOFFICE=/Applications/LibreOffice.app/Contents/MacOS/soffice
 PROFILE=$(mktemp -d)
-export REPORT_DOCX="$PWD/docs/report/RV32I_Project_Report.docx"
-export REPORT_PDF="$PWD/docs/report/RV32I_Project_Report.pdf"
+export REPORT_DOCX="$PWD/docs/report/Detailed_Report_Team_Black_Coffee.docx"
+export REPORT_PDF="$PWD/docs/report/Detailed_Report_Team_Black_Coffee.pdf"
 # 1st run creates the temporary LibreOffice profile
 $SOFFICE -env:UserInstallation=file://$PROFILE --headless --terminate_after_init >/dev/null 2>&1 || true
 mkdir -p "$PROFILE/user/Scripts/python"
