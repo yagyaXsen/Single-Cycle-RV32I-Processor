@@ -128,4 +128,4 @@ up-to-date table of contents. Slides: `tools/build_slides.js`.
 | `fibonacci` | benchmark: first 20 Fibonacci numbers (a0 = 4181) |
 | `full_test` | all 10 instructions together (a0 = 62); used for synthesis / FPGA |
 
-See `docs/VIVA_NOTES.md` for a simple explanation of the design and likely viva question
+See `docs/VIVA_NOTES.md` for a simple explanation of the design and likely viva questions.
