@@ -23,7 +23,7 @@ reference model and synthesized for FPGA.
 | **IEEE project report** | [docs/report/IEEE_Report_Team_Black_Coffee.pdf](docs/report/IEEE_Report_Team_Black_Coffee.pdf) |
 | Detailed technical report | [docs/report/Detailed_Report_Team_Black_Coffee.pdf](docs/report/Detailed_Report_Team_Black_Coffee.pdf) |
 | Presentation | [docs/presentation/Presentation_Team_Black_Coffee.pdf](docs/presentation/Presentation_Team_Black_Coffee.pdf) |
-| **Prototype demo video** | _link will be added after upload_ |
+| **Prototype demo video** (4:50) | [Watch on Google Drive](https://drive.google.com/file/d/11Pg4X_u4xQy9lk8XPP7reOBTsmy1zOfW/view?usp=sharing) |
 
 ---
 
