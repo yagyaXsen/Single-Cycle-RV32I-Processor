@@ -1,0 +1,49 @@
+; listing of programs/memcpy_test.s
+; ADDR  MACHINE   SOURCE
+0000  10000413  addi s0, x0, 0x100      # source base
+0004  18000493  addi s1, x0, 0x180      # destination base
+0008  00800593  addi a1, x0, 8          # n = 8 words
+000c  00000313  addi t1, x0, 0          # i = 0
+0010  ffb00393  addi t2, x0, -5         # value = -5
+0014  00040e13  addi t3, s0, 0          # src pointer
+0018  007e2023  fill:   sw   t2, 0(t3)          # src[i] = value
+001c  00338393  addi t2, t2, 3          # value += 3
+0020  004e0e13  addi t3, t3, 4
+0024  00130313  addi t1, t1, 1
+0028  feb318e3  bne  t1, a1, fill
+002c  00000313  addi t1, x0, 0          # copy loop
+0030  00040e13  addi t3, s0, 0
+0034  00048e93  addi t4, s1, 0
+0038  000e2f03  copy:   lw   t5, 0(t3)          # t5 = src[i]
+003c  01eea023  sw   t5, 0(t4)          # dst[i] = t5
+0040  004e0e13  addi t3, t3, 4
+0044  004e8e93  addi t4, t4, 4
+0048  00130313  addi t1, t1, 1
+004c  feb316e3  bne  t1, a1, copy
+0050  00000313  addi t1, x0, 0          # verify loop
+0054  00040e13  addi t3, s0, 0
+0058  00048e93  addi t4, s1, 0
+005c  00000613  addi a2, x0, 0          # mismatches = 0
+0060  00000693  addi a3, x0, 0          # checksum = 0
+0064  000e2f03  verify: lw   t5, 0(t3)
+0068  000eaf83  lw   t6, 0(t4)
+006c  01f6c6b3  xor  a3, a3, t6         # checksum ^= dst[i]
+0070  01ff0463  beq  t5, t6, same
+0074  00160613  addi a2, a2, 1          # mismatch found
+0078  004e0e13  same:   addi t3, t3, 4
+007c  004e8e93  addi t4, t4, 4
+0080  00130313  addi t1, t1, 1
+0084  feb310e3  bne  t1, a1, verify
+0088  00100513  addi a0, x0, 1          # assume success
+008c  00060463  beq  a2, x0, done
+0090  fff00513  addi a0, x0, -1         # failure marker
+0094  20a02023  done:   sw   a0, 512(x0)        # mem[0x200] = result
+0098  20d02223  sw   a3, 516(x0)        # mem[0x204] = checksum
+009c  00000063  halt
+
+; labels
+;   fill         = 0x0018
+;   copy         = 0x0038
+;   verify       = 0x0064
+;   same         = 0x0078
+;   done         = 0x0094

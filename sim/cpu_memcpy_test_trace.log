@@ -1,0 +1,170 @@
+     1  pc=00000000  instr=10000413  x8 <= 00000100
+     2  pc=00000004  instr=18000493  x9 <= 00000180
+     3  pc=00000008  instr=00800593  x11 <= 00000008
+     4  pc=0000000c  instr=00000313  x6 <= 00000000
+     5  pc=00000010  instr=ffb00393  x7 <= fffffffb
+     6  pc=00000014  instr=00040e13  x28 <= 00000100
+     7  pc=00000018  instr=007e2023  mem[00000100] <= fffffffb
+     8  pc=0000001c  instr=00338393  x7 <= fffffffe
+     9  pc=00000020  instr=004e0e13  x28 <= 00000104
+    10  pc=00000024  instr=00130313  x6 <= 00000001
+    11  pc=00000028  instr=feb318e3  branch     TAKEN
+    12  pc=00000018  instr=007e2023  mem[00000104] <= fffffffe
+    13  pc=0000001c  instr=00338393  x7 <= 00000001
+    14  pc=00000020  instr=004e0e13  x28 <= 00000108
+    15  pc=00000024  instr=00130313  x6 <= 00000002
+    16  pc=00000028  instr=feb318e3  branch     TAKEN
+    17  pc=00000018  instr=007e2023  mem[00000108] <= 00000001
+    18  pc=0000001c  instr=00338393  x7 <= 00000004
+    19  pc=00000020  instr=004e0e13  x28 <= 0000010c
+    20  pc=00000024  instr=00130313  x6 <= 00000003
+    21  pc=00000028  instr=feb318e3  branch     TAKEN
+    22  pc=00000018  instr=007e2023  mem[0000010c] <= 00000004
+    23  pc=0000001c  instr=00338393  x7 <= 00000007
+    24  pc=00000020  instr=004e0e13  x28 <= 00000110
+    25  pc=00000024  instr=00130313  x6 <= 00000004
+    26  pc=00000028  instr=feb318e3  branch     TAKEN
+    27  pc=00000018  instr=007e2023  mem[00000110] <= 00000007
+    28  pc=0000001c  instr=00338393  x7 <= 0000000a
+    29  pc=00000020  instr=004e0e13  x28 <= 00000114
+    30  pc=00000024  instr=00130313  x6 <= 00000005
+    31  pc=00000028  instr=feb318e3  branch     TAKEN
+    32  pc=00000018  instr=007e2023  mem[00000114] <= 0000000a
+    33  pc=0000001c  instr=00338393  x7 <= 0000000d
+    34  pc=00000020  instr=004e0e13  x28 <= 00000118
+    35  pc=00000024  instr=00130313  x6 <= 00000006
+    36  pc=00000028  instr=feb318e3  branch     TAKEN
+    37  pc=00000018  instr=007e2023  mem[00000118] <= 0000000d
+    38  pc=0000001c  instr=00338393  x7 <= 00000010
+    39  pc=00000020  instr=004e0e13  x28 <= 0000011c
+    40  pc=00000024  instr=00130313  x6 <= 00000007
+    41  pc=00000028  instr=feb318e3  branch     TAKEN
+    42  pc=00000018  instr=007e2023  mem[0000011c] <= 00000010
+    43  pc=0000001c  instr=00338393  x7 <= 00000013
+    44  pc=00000020  instr=004e0e13  x28 <= 00000120
+    45  pc=00000024  instr=00130313  x6 <= 00000008
+    46  pc=00000028  instr=feb318e3  branch not taken
+    47  pc=0000002c  instr=00000313  x6 <= 00000000
+    48  pc=00000030  instr=00040e13  x28 <= 00000100
+    49  pc=00000034  instr=00048e93  x29 <= 00000180
+    50  pc=00000038  instr=000e2f03  x30 <= fffffffb
+    51  pc=0000003c  instr=01eea023  mem[00000180] <= fffffffb
+    52  pc=00000040  instr=004e0e13  x28 <= 00000104
+    53  pc=00000044  instr=004e8e93  x29 <= 00000184
+    54  pc=00000048  instr=00130313  x6 <= 00000001
+    55  pc=0000004c  instr=feb316e3  branch     TAKEN
+    56  pc=00000038  instr=000e2f03  x30 <= fffffffe
+    57  pc=0000003c  instr=01eea023  mem[00000184] <= fffffffe
+    58  pc=00000040  instr=004e0e13  x28 <= 00000108
+    59  pc=00000044  instr=004e8e93  x29 <= 00000188
+    60  pc=00000048  instr=00130313  x6 <= 00000002
+    61  pc=0000004c  instr=feb316e3  branch     TAKEN
+    62  pc=00000038  instr=000e2f03  x30 <= 00000001
+    63  pc=0000003c  instr=01eea023  mem[00000188] <= 00000001
+    64  pc=00000040  instr=004e0e13  x28 <= 0000010c
+    65  pc=00000044  instr=004e8e93  x29 <= 0000018c
+    66  pc=00000048  instr=00130313  x6 <= 00000003
+    67  pc=0000004c  instr=feb316e3  branch     TAKEN
+    68  pc=00000038  instr=000e2f03  x30 <= 00000004
+    69  pc=0000003c  instr=01eea023  mem[0000018c] <= 00000004
+    70  pc=00000040  instr=004e0e13  x28 <= 00000110
+    71  pc=00000044  instr=004e8e93  x29 <= 00000190
+    72  pc=00000048  instr=00130313  x6 <= 00000004
+    73  pc=0000004c  instr=feb316e3  branch     TAKEN
+    74  pc=00000038  instr=000e2f03  x30 <= 00000007
+    75  pc=0000003c  instr=01eea023  mem[00000190] <= 00000007
+    76  pc=00000040  instr=004e0e13  x28 <= 00000114
+    77  pc=00000044  instr=004e8e93  x29 <= 00000194
+    78  pc=00000048  instr=00130313  x6 <= 00000005
+    79  pc=0000004c  instr=feb316e3  branch     TAKEN
+    80  pc=00000038  instr=000e2f03  x30 <= 0000000a
+    81  pc=0000003c  instr=01eea023  mem[00000194] <= 0000000a
+    82  pc=00000040  instr=004e0e13  x28 <= 00000118
+    83  pc=00000044  instr=004e8e93  x29 <= 00000198
+    84  pc=00000048  instr=00130313  x6 <= 00000006
+    85  pc=0000004c  instr=feb316e3  branch     TAKEN
+    86  pc=00000038  instr=000e2f03  x30 <= 0000000d
+    87  pc=0000003c  instr=01eea023  mem[00000198] <= 0000000d
+    88  pc=00000040  instr=004e0e13  x28 <= 0000011c
+    89  pc=00000044  instr=004e8e93  x29 <= 0000019c
+    90  pc=00000048  instr=00130313  x6 <= 00000007
+    91  pc=0000004c  instr=feb316e3  branch     TAKEN
+    92  pc=00000038  instr=000e2f03  x30 <= 00000010
+    93  pc=0000003c  instr=01eea023  mem[0000019c] <= 00000010
+    94  pc=00000040  instr=004e0e13  x28 <= 00000120
+    95  pc=00000044  instr=004e8e93  x29 <= 000001a0
+    96  pc=00000048  instr=00130313  x6 <= 00000008
+    97  pc=0000004c  instr=feb316e3  branch not taken
+    98  pc=00000050  instr=00000313  x6 <= 00000000
+    99  pc=00000054  instr=00040e13  x28 <= 00000100
+   100  pc=00000058  instr=00048e93  x29 <= 00000180
+   101  pc=0000005c  instr=00000613  x12 <= 00000000
+   102  pc=00000060  instr=00000693  x13 <= 00000000
+   103  pc=00000064  instr=000e2f03  x30 <= fffffffb
+   104  pc=00000068  instr=000eaf83  x31 <= fffffffb
+   105  pc=0000006c  instr=01f6c6b3  x13 <= fffffffb
+   106  pc=00000070  instr=01ff0463  branch     TAKEN
+   107  pc=00000078  instr=004e0e13  x28 <= 00000104
+   108  pc=0000007c  instr=004e8e93  x29 <= 00000184
+   109  pc=00000080  instr=00130313  x6 <= 00000001
+   110  pc=00000084  instr=feb310e3  branch     TAKEN
+   111  pc=00000064  instr=000e2f03  x30 <= fffffffe
+   112  pc=00000068  instr=000eaf83  x31 <= fffffffe
+   113  pc=0000006c  instr=01f6c6b3  x13 <= 00000005
+   114  pc=00000070  instr=01ff0463  branch     TAKEN
+   115  pc=00000078  instr=004e0e13  x28 <= 00000108
+   116  pc=0000007c  instr=004e8e93  x29 <= 00000188
+   117  pc=00000080  instr=00130313  x6 <= 00000002
+   118  pc=00000084  instr=feb310e3  branch     TAKEN
+   119  pc=00000064  instr=000e2f03  x30 <= 00000001
+   120  pc=00000068  instr=000eaf83  x31 <= 00000001
+   121  pc=0000006c  instr=01f6c6b3  x13 <= 00000004
+   122  pc=00000070  instr=01ff0463  branch     TAKEN
+   123  pc=00000078  instr=004e0e13  x28 <= 0000010c
+   124  pc=0000007c  instr=004e8e93  x29 <= 0000018c
+   125  pc=00000080  instr=00130313  x6 <= 00000003
+   126  pc=00000084  instr=feb310e3  branch     TAKEN
+   127  pc=00000064  instr=000e2f03  x30 <= 00000004
+   128  pc=00000068  instr=000eaf83  x31 <= 00000004
+   129  pc=0000006c  instr=01f6c6b3  x13 <= 00000000
+   130  pc=00000070  instr=01ff0463  branch     TAKEN
+   131  pc=00000078  instr=004e0e13  x28 <= 00000110
+   132  pc=0000007c  instr=004e8e93  x29 <= 00000190
+   133  pc=00000080  instr=00130313  x6 <= 00000004
+   134  pc=00000084  instr=feb310e3  branch     TAKEN
+   135  pc=00000064  instr=000e2f03  x30 <= 00000007
+   136  pc=00000068  instr=000eaf83  x31 <= 00000007
+   137  pc=0000006c  instr=01f6c6b3  x13 <= 00000007
+   138  pc=00000070  instr=01ff0463  branch     TAKEN
+   139  pc=00000078  instr=004e0e13  x28 <= 00000114
+   140  pc=0000007c  instr=004e8e93  x29 <= 00000194
+   141  pc=00000080  instr=00130313  x6 <= 00000005
+   142  pc=00000084  instr=feb310e3  branch     TAKEN
+   143  pc=00000064  instr=000e2f03  x30 <= 0000000a
+   144  pc=00000068  instr=000eaf83  x31 <= 0000000a
+   145  pc=0000006c  instr=01f6c6b3  x13 <= 0000000d
+   146  pc=00000070  instr=01ff0463  branch     TAKEN
+   147  pc=00000078  instr=004e0e13  x28 <= 00000118
+   148  pc=0000007c  instr=004e8e93  x29 <= 00000198
+   149  pc=00000080  instr=00130313  x6 <= 00000006
+   150  pc=00000084  instr=feb310e3  branch     TAKEN
+   151  pc=00000064  instr=000e2f03  x30 <= 0000000d
+   152  pc=00000068  instr=000eaf83  x31 <= 0000000d
+   153  pc=0000006c  instr=01f6c6b3  x13 <= 00000000
+   154  pc=00000070  instr=01ff0463  branch     TAKEN
+   155  pc=00000078  instr=004e0e13  x28 <= 0000011c
+   156  pc=0000007c  instr=004e8e93  x29 <= 0000019c
+   157  pc=00000080  instr=00130313  x6 <= 00000007
+   158  pc=00000084  instr=feb310e3  branch     TAKEN
+   159  pc=00000064  instr=000e2f03  x30 <= 00000010
+   160  pc=00000068  instr=000eaf83  x31 <= 00000010
+   161  pc=0000006c  instr=01f6c6b3  x13 <= 00000010
+   162  pc=00000070  instr=01ff0463  branch     TAKEN
+   163  pc=00000078  instr=004e0e13  x28 <= 00000120
+   164  pc=0000007c  instr=004e8e93  x29 <= 000001a0
+   165  pc=00000080  instr=00130313  x6 <= 00000008
+   166  pc=00000084  instr=feb310e3  branch not taken
+   167  pc=00000088  instr=00100513  x10 <= 00000001
+   168  pc=0000008c  instr=00060463  branch     TAKEN
+   169  pc=00000094  instr=20a02023  mem[00000200] <= 00000001
+   170  pc=00000098  instr=20d02223  mem[00000204] <= 00000010

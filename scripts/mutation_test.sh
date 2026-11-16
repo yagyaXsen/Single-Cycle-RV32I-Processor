@@ -7,7 +7,7 @@
 # ============================================================================
 set -u
 cd "$(dirname "$0")/.."
-PROGRAMS="alu_test mem_test branch_test illegal_test array_sum fibonacci full_test"
+PROGRAMS="alu_test mem_test branch_test illegal_test memcpy_test array_sum fibonacci full_test"
 OUT=sim/mutation_results.txt
 : > "$OUT"
 

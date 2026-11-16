@@ -16,7 +16,7 @@ cd "$(dirname "$0")/.."
 mkdir -p build sim
 
 PY=python3
-PROGRAMS="alu_test mem_test branch_test illegal_test array_sum fibonacci full_test"
+PROGRAMS="alu_test mem_test branch_test illegal_test memcpy_test array_sum fibonacci full_test"
 SUMMARY=sim/results_summary.txt
 : > "$SUMMARY"
 fail=0

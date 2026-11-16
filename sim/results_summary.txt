@@ -6,6 +6,7 @@ cpu alu_test       RESULT: PASS  (build/alu_test.hex) | 22 instructions in 22 cy
 cpu mem_test       RESULT: PASS  (build/mem_test.hex) | 23 instructions in 23 cycles -> CPI = 1.00
 cpu branch_test    RESULT: PASS  (build/branch_test.hex) | 34 instructions in 34 cycles -> CPI = 1.00
 cpu illegal_test   RESULT: PASS  (build/illegal_test.hex) | 18 instructions in 18 cycles -> CPI = 1.00
+cpu memcpy_test    RESULT: PASS  (build/memcpy_test.hex) | 170 instructions in 170 cycles -> CPI = 1.00
 cpu array_sum      RESULT: PASS  (build/array_sum.hex) | 76 instructions in 76 cycles -> CPI = 1.00
 cpu fibonacci      RESULT: PASS  (build/fibonacci.hex) | 146 instructions in 146 cycles -> CPI = 1.00
 cpu full_test      RESULT: PASS  (build/full_test.hex) | 88 instructions in 88 cycles -> CPI = 1.00
@@ -13,6 +14,7 @@ stall alu_test       RESULT: PASS  (build/alu_test.hex) | CPU frozen for 13 cloc
 stall mem_test       RESULT: PASS  (build/mem_test.hex) | CPU frozen for 13 clock cycles (en = 0) - results unaffected
 stall branch_test    RESULT: PASS  (build/branch_test.hex) | CPU frozen for 20 clock cycles (en = 0) - results unaffected
 stall illegal_test   RESULT: PASS  (build/illegal_test.hex) | CPU frozen for 10 clock cycles (en = 0) - results unaffected
+stall memcpy_test    RESULT: PASS  (build/memcpy_test.hex) | CPU frozen for 97 clock cycles (en = 0) - results unaffected
 stall array_sum      RESULT: PASS  (build/array_sum.hex) | CPU frozen for 44 clock cycles (en = 0) - results unaffected
 stall fibonacci      RESULT: PASS  (build/fibonacci.hex) | CPU frozen for 84 clock cycles (en = 0) - results unaffected
 stall full_test      RESULT: PASS  (build/full_test.hex) | CPU frozen for 50 clock cycles (en = 0) - results unaffected
