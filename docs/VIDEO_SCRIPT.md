@@ -1,136 +1,103 @@
-# Project Video – Script and Shot List (about 8–10 minutes)
+# Prototype Video – 5-Minute Script (Team Black Coffee, Group B)
 
-Goal of the video: prove the project does what the PDF asked for —
-**design → RTL → testbench → simulation/waveforms → synthesis → performance →
-comparison → report** — and show that you understand it.
+Rules from the evaluation: **maximum 5 minutes**, state the project idea,
+**introduce all 5 members by name**, show the working prototype
+(Verilog implementation, block diagram, simulation).
 
-## Before recording
+Each member presents his own part — this also shows individual contributions.
+Target total: **4 min 40 s** (20 s safety margin).
 
-- Close other apps and notifications (Focus mode → Do Not Disturb).
-- Terminal: big font (Cmd + several times), `cd` into `rv32i_single_cycle`.
-- Open in advance: the slides (`docs/presentation/RV32I_Presentation.pptx`),
-  VS Code (or any editor) on the `rtl/` folder, the report PDF.
-- Run `./scripts/run_all.sh` once beforehand so `sim/*.vcd` files exist.
-- Record with **Cmd + Shift + 5** (macOS screen recorder, choose "Options →
-  Microphone") or QuickTime → File → New Screen Recording. OBS Studio if you
-  want your face in a corner.
-- Record scene by scene; join the clips afterwards in iMovie / CapCut.
-
----
-
-## Scene 1 – Introduction (≈ 45 s) · show: title slide
-
-> "Hello, I am [name], [roll no.]. My project is Project 1 from the Modern
-> Computer Architecture list: a single-cycle RV32I processor in Verilog. The
-> task was to design and verify a RISC-V CPU that runs ten instructions — ADD,
-> SUB, AND, OR, XOR, ADDI, LW, SW, BEQ and BNE — then synthesize it and measure
-> its performance."
-
-Show slide 2 (the ten instructions) briefly.
-
-## Scene 2 – What I had to do (≈ 45 s) · show: the PDF page of Project 1, then README checklist
-
-> "The project document asked for these modules, a testbench, test programs,
-> waveforms, a synthesis report, a performance metric, a comparison with a
-> baseline and a final report. This table shows where each one is in my
-> project."
-
-Scroll the "Deliverables checklist" table in `README.md`.
-
-## Scene 3 – Architecture (≈ 1.5 min) · show: datapath slide (slide 4)
-
-Point with the mouse while explaining one instruction, e.g. **LW**:
-
-> "The PC gives the address to instruction memory. The control unit decodes
-> the opcode. The register file reads rs1, the immediate generator makes the
-> offset, and the ALU adds them to get the address. Data memory is read and
-> the write-back MUX writes the value into rd. Everything happens in one clock
-> cycle, so CPI is one."
-
-Then slide 6 (control truth table): explain one row.
-
-## Scene 4 – The Verilog code (≈ 1.5 min) · show: editor
-
-Open, in this order, and spend ~15 s on each:
-
-1. `rtl/rv32i_cpu.v` – "the top level connects all modules" (scroll the instantiations).
-2. `rtl/control_unit.v` – the case statement for opcodes.
-3. `rtl/alu.v` – five operations and the zero flag.
-4. `rtl/reg_file.v` – two read ports, one write port, x0 is always zero.
-5. `programs/full_test.s` – "a test program in assembly; my assembler turns it into machine code".
-
-## Scene 5 – Simulation and verification (≈ 2 min) · show: terminal
-
-Run the demo script (it pauses between steps so you can talk):
-
-```bash
-./scripts/demo.sh
-```
-
-Step 1 – all tests:
-> "This runs four unit testbenches and seven programs. The testbench compares
-> every register, all of memory, the final PC and instruction count with a
-> Python reference model. Everything says PASS."
-
-Step 2 – one program's output:
-> "Here is the final register file for the full test: a0 is 62, which is the
-> expected answer. CPI is exactly one."
-
-Step 3 – mutation test:
-> "To prove the testbench really finds bugs, I inserted twelve deliberate bugs
-> into copies of the design. The testbench caught all twelve."
-
-## Scene 6 – Waveforms (≈ 1.5 min) · show: Surfer
-
-The demo script opens `surfer sim/cpu_full_test.vcd`. Add signals:
-`clk, pc, instr, reg_write, mem_read, mem_write, branch, pc_src, alu_result,
-wb_data` (in `tb_rv32i_cpu → dut`). Zoom so 10–15 cycles are visible.
-
-> "Each clock cycle is one instruction. Here is an LW: MemRead goes high and
-> the loaded value appears on the write-back bus. Here is a BNE that is taken:
-> PCSrc is one and the PC jumps back to the start of the loop."
-
-(If Surfer is awkward on camera, show slides 11–12 instead – same waveforms.)
-
-## Scene 7 – Synthesis and performance (≈ 1.5 min) · show: terminal + slides 7, 13, 14
-
-Optionally run `./scripts/synth.sh` (takes about a minute – you can cut the wait).
-
-> "Synthesis for the Artix-7 on the Basys-3 board uses about 638 LUTs, only 3%
-> of the chip. After place and route on a Lattice ECP5 the maximum frequency is
-> 44.4 MHz. The critical path is the load instruction — 22.5 ns — because it
-> passes through both memories."
-
-Slide 14:
-> "Compared with a multi-cycle design, my single-cycle CPU is 1.02 to 1.27
-> times faster on these programs. A pipeline, which is Project 3, would be the
-> next improvement."
-
-## Scene 8 – Report and conclusion (≈ 45 s) · show: report PDF, then conclusion slide
-
-Scroll quickly through the report (contents, block diagram, results tables).
-
-> "All of this is documented in the report. In conclusion, the processor runs
-> all ten instructions correctly, is fully verified, small and runs at 44 MHz.
-> Thank you."
+| Time | Speaker | On screen | Length |
+|---|---|---|---|
+| 0:00 – 0:35 | Alok Kumar | Title slide → team slide | 35 s |
+| 0:35 – 1:20 | Alok Kumar | Datapath slide | 45 s |
+| 1:20 – 1:55 | Gourav Tanwar | `rtl/reg_file.v`, `rtl/imm_gen.v` | 35 s |
+| 1:55 – 2:30 | Saransh Singh Tomar | `rtl/alu.v`, `programs/full_test.s` | 35 s |
+| 2:30 – 3:30 | Rachit Singh | Terminal: `./scripts/demo.sh`, waveform | 60 s |
+| 3:30 – 4:10 | Sharma Piyush | Synthesis slide, `fpga/fpga_top.v` | 40 s |
+| 4:10 – 4:40 | Alok Kumar | Results slide → conclusion slide | 30 s |
 
 ---
 
-## Checklist – the video must show
+## 1. Alok Kumar — introduction (0:00 – 0:35) · title slide, then team slide
 
-- [ ] Your name / project title
-- [ ] The 10 instructions and the block diagram
-- [ ] Verilog code of the main modules
-- [ ] Test programs
-- [ ] Tests running and printing PASS
-- [ ] Waveforms with at least one LW, SW and branch
-- [ ] Synthesis numbers (LUTs, Fmax)
-- [ ] One performance metric (CPI / execution time) and the baseline comparison
-- [ ] The report
+> "Hello, we are Team Black Coffee, Group B. I am Alok Kumar, and my teammates
+> are Sharma Piyush, Gourav Tanwar, Saransh Singh Tomar and Rachit Singh.
+> Our project is a **single-cycle RV32I processor in Verilog**. It is a 32-bit
+> RISC-V CPU that runs ten instructions — ADD, SUB, AND, OR, XOR, ADDI, load
+> word, store word, BEQ and BNE — and every instruction finishes in one clock
+> cycle."
 
-## Tips
+## 2. Alok Kumar — architecture (0:35 – 1:20) · datapath slide
 
-- Speak slowly; it is fine to re-record one scene.
-- Keep the terminal font large enough to read on a phone.
-- Don't read the slides word for word — explain in your own words.
-- If you have a Basys-3 board, add a 30 s clip of the LEDs showing 62.
+Point with the mouse while speaking:
+
+> "This is our datapath. The program counter fetches the instruction from
+> instruction memory. The control unit, which I designed, decodes the opcode and
+> sets the control signals. The register file reads the operands, the ALU
+> computes, data memory is used by load and store, and the write-back
+> multiplexer writes the result. The next PC is PC plus four, or the branch
+> target when a branch is taken."
+
+## 3. Gourav Tanwar — storage modules (1:20 – 1:55) · editor
+
+Show `rtl/reg_file.v`, then `rtl/imm_gen.v`.
+
+> "I am Gourav Tanwar. I built the program counter, the memories, the register
+> file and the immediate generator. The register file has 32 registers with two
+> read ports and one write port, and register x0 is always zero. The immediate
+> generator extracts and sign-extends the I, S and B-type immediates."
+
+## 4. Saransh Singh Tomar — ALU and test programs (1:55 – 2:30) · editor
+
+Show `rtl/alu.v`, then `programs/full_test.s`.
+
+> "I am Saransh Singh Tomar. I built the ALU, which performs add, subtract,
+> AND, OR and XOR and produces the zero flag used by branches, plus the branch
+> unit. I also wrote our assembler and the test programs — this one uses all
+> ten instructions and should finish with the value 62."
+
+## 5. Rachit Singh — verification (2:30 – 3:30) · terminal + waveform
+
+Run `./scripts/demo.sh` and press Enter through steps 1, 2 and 4
+(cut the waiting in editing). Then show the waveform (Surfer or slide 12).
+
+> "I am Rachit Singh, and I handled verification. A Python reference model
+> calculates the correct result of every program, and our testbench compares
+> all registers, all memory, the final PC and the instruction count.
+> All tests pass, and register a0 is 62 as expected. To prove the testbench
+> really catches bugs, we injected twelve deliberate bugs — it caught all
+> twelve. In this waveform each column is one instruction: here the BNE is
+> taken and the PC jumps back to the start of the loop."
+
+## 6. Sharma Piyush — synthesis and FPGA (3:30 – 4:10) · synthesis slide, `fpga/fpga_top.v`
+
+> "I am Sharma Piyush. I prepared the FPGA implementation for the Basys-3
+> board — the top module shows the result on the LEDs and has a slow-step mode.
+> After synthesis our processor uses only about 638 LUTs, three percent of the
+> FPGA, and after place-and-route it runs at 44.4 megahertz."
+
+## 7. Alok Kumar — results and conclusion (4:10 – 4:40) · performance slide, conclusion slide
+
+> "Our CPU has a CPI of exactly one. The slowest instruction, load word, sets the
+> clock period, which is why the next step is a pipelined design. Everything —
+> code, report and results — is in our GitHub repository. Thank you."
+
+---
+
+## Recording tips
+
+- Record each part separately (each member can record his own part on his own
+  laptop with **Cmd + Shift + 5** on Mac, or **Win + G** / OBS on Windows),
+  then join the clips in CapCut / iMovie / Clipchamp and check the total is
+  **under 5:00**.
+- Turn the camera on for the first few seconds of each part so the examiner
+  sees who is speaking (optional but helps).
+- Large font in the editor/terminal; speak slowly and clearly.
+
+## Uploading
+
+1. Upload to **YouTube as "Unlisted"** (or Google Drive with
+   "Anyone with the link can view").
+2. Put the link in `README.md` (section "Demo video") and in the submission form.
+3. **Do not commit the video file to GitHub** — files over 100 MB are rejected.
