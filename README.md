@@ -16,6 +16,15 @@ reference model and synthesized for FPGA.
 | Lattice ECP5 post-route Fmax | 44.4 MHz (critical path 22.5 ns, the LW path) |
 | CPI / throughput | 1.00 / 44.4 MIPS |
 
+## Project report and demo video
+
+| | |
+|---|---|
+| **IEEE project report** | [docs/report/IEEE_Report_Team_Black_Coffee.pdf](docs/report/IEEE_Report_Team_Black_Coffee.pdf) |
+| Detailed technical report | [docs/report/RV32I_Project_Report.pdf](docs/report/RV32I_Project_Report.pdf) |
+| Presentation | [docs/presentation/RV32I_Presentation.pdf](docs/presentation/RV32I_Presentation.pdf) |
+| **Prototype demo video** | _link will be added after upload_ |
+
 ---
 
 ## Deliverables checklist (from the project PDF)
@@ -124,6 +133,7 @@ up-to-date table of contents. Slides: `tools/build_slides.js`.
 | `mem_test` | LW/SW with positive/negative/zero offsets, first & last word, load-use |
 | `branch_test` | BEQ/BNE taken & not taken, forward/backward, loops, unconditional jump |
 | `illegal_test` | unsupported instructions behave as NOPs |
+| `memcpy_test` | copy an 8-word array with LW/SW and verify it (a0 = 1) |
 | `array_sum` | benchmark: sum of a 10-element array (a0 = 39) |
 | `fibonacci` | benchmark: first 20 Fibonacci numbers (a0 = 4181) |
 | `full_test` | all 10 instructions together (a0 = 62); used for synthesis / FPGA |
