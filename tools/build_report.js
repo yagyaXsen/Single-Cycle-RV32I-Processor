@@ -101,36 +101,64 @@ const killed = R.mutation.filter((m) => m.status === "KILLED").length;
 const pct = (a, b) => ((100 * a) / b).toFixed(1) + "%";
 
 // ---------------------------------------------------------------- content
+// ---------------------------------------------------------------- team
+const TEAM = {
+  name: "Black Coffee", group: "B",
+  programme: "B.Tech in Computer Science and Artificial Intelligence",
+  institute: "Newton School of Technology, Rishihood University",
+  course: "Modern Computer Architecture",
+  repo: "https://github.com/yagyaXsen/Single-Cycle-RV32I-Processor",
+  members: [
+    { name: "Alok Kumar", roll: "2401010058", email: "alok.kumar2024@nst.rishihood.edu.in", role: "Team lead – architecture, control and integration" },
+    { name: "Sharma Piyush", roll: "2401010437", email: "sharma.piyush2024@nst.rishihood.edu.in", role: "FPGA implementation, presentation and demo" },
+    { name: "Gourav Tanwar", roll: "2401010173", email: "gourav.tanwar2024@nst.rishihood.edu.in", role: "Datapath storage – PC, register file, memories, immediate generator" },
+    { name: "Saransh Singh Tomar", roll: "2401010418", email: "saransh.tomar2024@nst.rishihood.edu.in", role: "Execution units, assembler and test programs" },
+    { name: "Rachit Singh", roll: "2401010364", email: "rachit.singh2024@nst.rishihood.edu.in", role: "Verification, waveforms and performance analysis" },
+  ],
+};
+function plainTable(headers, rows, widths, size = 20, center = false) {
+  const total = widths.reduce((a, b) => a + b, 0);
+  const W = widths.map((x) => Math.floor((x * CONTENT_W) / total));
+  W[W.length - 1] += CONTENT_W - W.reduce((a, b) => a + b, 0);
+  const mk = (t, i, head) => new TableCell({ borders, width: { size: W[i], type: WidthType.DXA },
+    shading: { type: ShadingType.CLEAR, fill: head ? "DCE6F2" : "FFFFFF" }, margins: { top: 60, bottom: 60, left: 90, right: 90 },
+    children: [new Paragraph({ alignment: center ? AlignmentType.CENTER : AlignmentType.LEFT, children: [new TextRun({ text: String(t), size, bold: head || undefined })] })] });
+  return new Table({ width: { size: CONTENT_W, type: WidthType.DXA }, columnWidths: W,
+    rows: [new TableRow({ tableHeader: true, children: headers.map((h, i) => mk(h, i, true)) }),
+      ...rows.map((r) => new TableRow({ cantSplit: true, children: r.map((c, i) => mk(c, i, false)) }))] });
+}
+
 const C_ = [];
 
 // ===== Title page
+const center = (text, o = {}, after = 80) => new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after }, children: [new TextRun({ text, size: 24, ...o })] });
 C_.push(
+  ...sp(1),
+  center("PROJECT REPORT", { bold: true, size: 28, color: "1F4E8C" }, 120),
+  center("on", { italics: true }, 120),
+  center("Design and Verification of a", { bold: true, size: 40 }, 160),
+  center("Single-Cycle RV32I Processor in Verilog", { bold: true, size: 40 }, 300),
+  center(`${TEAM.course} – Verilog Project 1`, {}, 80),
+  center("Area: RISC-V / CPU Datapath    |    Level: Intermediate+", { size: 22, color: "555555" }, 500),
+  center("Submitted by", { italics: true }, 80),
+  center(`Team ${TEAM.name}  (Group ${TEAM.group})`, { bold: true, size: 28 }, 200),
+  plainTable(["S. No.", "Name", "Roll No.", "Email"], TEAM.members.map((m, i) => [i + 1, m.name, m.roll, m.email]), [0.8, 2.6, 1.6, 4.4], 20),
   ...sp(2),
-  new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 120 }, children: [new TextRun({ text: "PROJECT REPORT", bold: true, size: 28, color: "1F4E8C" })] }),
-  new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 120 }, children: [new TextRun({ text: "on", italics: true, size: 24 })] }),
-  new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 160 }, children: [new TextRun({ text: "Design and Verification of a", bold: true, size: 40 })] }),
-  new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 300 }, children: [new TextRun({ text: "Single-Cycle RV32I Processor in Verilog", bold: true, size: 40 })] }),
-  new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 80 }, children: [new TextRun({ text: "Modern Computer Architecture – Verilog Project 1", size: 24 })] }),
-  new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 600 }, children: [new TextRun({ text: "Area: RISC-V / CPU Datapath    |    Level: Intermediate+", size: 22, color: "555555" })] }),
-  new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 80 }, children: [new TextRun({ text: "Submitted by", italics: true, size: 24 })] }),
-  new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 60 }, children: [new TextRun({ text: "[Student Name]", bold: true, size: 26 })] }),
-  new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 400 }, children: [new TextRun({ text: "Roll No.: [Roll Number]", size: 24 })] }),
-  new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 80 }, children: [new TextRun({ text: "Under the guidance of", italics: true, size: 24 })] }),
-  new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 600 }, children: [new TextRun({ text: "[Guide Name], [Designation]", bold: true, size: 24 })] }),
-  new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 60 }, children: [new TextRun({ text: "Master of Computer Applications (MCA)", size: 24 })] }),
-  new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 60 }, children: [new TextRun({ text: "[Department Name], [Institute / University Name]", size: 24 })] }),
-  new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: "November 2026", size: 24 })] }),
+  center(TEAM.programme, {}, 60),
+  center(TEAM.institute, { bold: true }, 60),
+  center("November 2026"),
 );
 
 // ===== Declaration / acknowledgement
 C_.push(
   new Paragraph({ heading: HeadingLevel.HEADING_1, pageBreakBefore: true, children: [new TextRun("Declaration")] }),
-  P("I hereby declare that the project report entitled **“Design and Verification of a Single-Cycle RV32I Processor in Verilog”** submitted for the course Modern Computer Architecture is a record of work carried out by me under the guidance of [Guide Name]. The results embodied in this report have not been submitted elsewhere for the award of any degree or diploma."),
-  ...sp(2),
-  P("Place: [City]                                                                                    [Student Name]"),
-  P("Date: [Date]                                                                                      Roll No.: [Roll Number]"),
-  new Paragraph({ heading: HeadingLevel.HEADING_1, spacing: { before: 600, after: 200 }, children: [new TextRun("Acknowledgement")] }),
-  P("I express my sincere gratitude to [Guide Name] for the guidance and encouragement provided throughout this project. I also thank the faculty of the [Department Name] for the course Modern Computer Architecture, which provided the theoretical foundation for this work, and the developers of the open-source tools (Icarus Verilog, Yosys, nextpnr, Surfer/GTKWave) used in this project."),
+  P(`We, the members of Team ${TEAM.name} (Group ${TEAM.group}), hereby declare that the project report entitled **“Design and Verification of a Single-Cycle RV32I Processor in Verilog”**, submitted for the course ${TEAM.course} at ${TEAM.institute}, is a record of original work carried out by us. The contribution of each member is described in Chapter 11. The results embodied in this report have not been submitted elsewhere for the award of any degree or diploma.`),
+  ...sp(1),
+  plainTable(["Name", "Roll No.", "Signature"], TEAM.members.map((m) => [m.name, m.roll, " "]), [3.5, 2.2, 3.3], 21),
+  ...sp(1),
+  P("Date: ____________________"),
+  new Paragraph({ heading: HeadingLevel.HEADING_1, spacing: { before: 480, after: 200 }, children: [new TextRun("Acknowledgement")] }),
+  P(`We express our sincere gratitude to the course instructor and teaching assistants of ${TEAM.course} at ${TEAM.institute} for their guidance and for the clear project specification, which provided the foundation for this work. We also thank the developers of the open-source tools used in this project — Icarus Verilog, Yosys, nextpnr and Surfer/GTKWave.`),
 );
 
 // ===== Abstract
@@ -139,6 +167,7 @@ C_.push(
   P(`This project presents the design, implementation and verification of a compact **single-cycle 32-bit RISC-V processor** written in synthesizable Verilog. The processor executes a subset of the RV32I base integer instruction set — **ADD, SUB, AND, OR, XOR, ADDI, LW, SW, BEQ and BNE** — with every instruction completing in exactly one clock cycle (CPI = 1). The design is organised as a modular hierarchy of the components suggested in the project specification: Program Counter, Instruction Memory, Control Unit (instruction decoder), 32 × 32-bit Register File, Immediate Generator, ALU, Data Memory and Write-Back multiplexer, together with an ALU-control block, a branch unit and adders.`),
   P(`Verification uses a self-checking methodology: a small assembler converts test programs to machine code, and an independent Python golden reference model (instruction-set simulator) produces the expected final state. The Verilog testbench runs seven programs (directed tests and benchmarks such as array sum and Fibonacci) and compares **all 32 registers, every data-memory word, the final PC and the instruction count** with the reference. Four unit testbenches add ${unitTests} further checks. All tests pass, a random clock-enable stall test passes, and a **mutation test detected ${killed} of ${R.mutation.length} deliberately injected bugs**, demonstrating the strength of the testbench.`),
   P(`The design was synthesized with Yosys for a Xilinx Artix-7 (Basys-3) target, using about **${X.total_luts} LUTs (${pct(X.total_luts, X.lut_avail)}) and ${X.ffs} flip-flops**, and was placed and routed on a Lattice ECP5 FPGA with nextpnr, achieving a **maximum clock frequency of ${fmax.toFixed(1)} MHz** (critical path ${PF.critical_path_ns.toFixed(2)} ns through the LW instruction path). At this frequency the processor delivers ${fmax.toFixed(1)} MIPS. A comparison with an analytically modelled multi-cycle implementation of the same ISA shows the single-cycle design to be 1.02–1.27× faster on the test programs, and the analysis explains why pipelining (Project 3) is the next step.`),
+  P(`The project was carried out by the five members of Team ${TEAM.name} (Group ${TEAM.group}); the work of each member is described in Chapter 11, and the complete source code is available at ${TEAM.repo}.`),
   P("**Keywords:** RISC-V, RV32I, single-cycle processor, datapath, control unit, Verilog HDL, FPGA, verification, CPI."),
 );
 
@@ -173,6 +202,7 @@ C_.push(
     ["Comparison against a baseline architecture", "Chapter 8.3 (multi-cycle baseline)"],
     ["FPGA implementation (if available)", "Chapter 9 (Basys-3 wrapper, constraints, Vivado script)"],
     ["Final technical report and live demonstration", "This report; Chapter 9.3 demo procedure; slides"],
+    ["Work of individual team members", "Chapter 11 (team members and individual contributions)"],
   ], [5, 5]),
   H2("1.4 Tools used"),
   ...TABLE("Software tools", ["Tool", "Version", "Purpose"], [
@@ -184,7 +214,7 @@ C_.push(
     ["Xilinx Vivado (lab PC)", "any recent", "Optional: Basys-3 implementation and bitstream (script provided)"],
   ], [4, 2, 6]),
   H2("1.5 Organisation of the report"),
-  P("Chapter 2 reviews the RISC-V ISA subset and the single-cycle concept. Chapter 3 presents the architecture and block diagram, Chapter 4 the control unit and per-instruction operation, and Chapter 5 the RTL implementation. Chapter 6 describes the verification methodology and results, Chapter 7 the synthesis results, Chapter 8 the performance analysis and baseline comparison, and Chapter 9 the FPGA implementation and demonstration. Chapter 10 concludes the report. The appendices contain the complete Verilog source code, a test-program listing and instructions to reproduce every result."),
+  P("Chapter 2 reviews the RISC-V ISA subset and the single-cycle concept. Chapter 3 presents the architecture and block diagram, Chapter 4 the control unit and per-instruction operation, and Chapter 5 the RTL implementation. Chapter 6 describes the verification methodology and results, Chapter 7 the synthesis results, Chapter 8 the performance analysis and baseline comparison, and Chapter 9 the FPGA implementation and demonstration. Chapter 10 concludes the report and Chapter 11 describes the contribution of each team member. The appendices contain the complete Verilog source code, a test-program listing and instructions to reproduce every result."),
 );
 
 // ===== 2 Background
@@ -477,7 +507,56 @@ C_.push(
   B("Convert the design into a 5-stage pipeline with hazard detection, forwarding and branch prediction (Projects 3–5)."),
   B("Add a cache between the processor and a larger main memory (Projects 6–8)."),
   B("Run the Vivado flow on the Basys-3 board and add the Xilinx post-route timing to Chapter 7."),
-  H2("References"),
+);
+
+// ===== 11 Individual contributions
+const WORK = {
+  "Alok Kumar": [
+    "Coordinated the team, divided the work and maintained the GitHub repository.",
+    "Designed the overall single-cycle datapath and drew the block diagram (Figure 2).",
+    "Implemented the main control unit (`control_unit.v`), the ALU control (`alu_control.v`) and the shared constants (`defines.vh`).",
+    "Integrated all modules in the top level `rv32i_cpu.v` and debugged the complete processor.",
+    "Ran synthesis with Yosys and place-and-route with nextpnr (`scripts/synth.sh`) and analysed the critical path.",
+    "Compiled and edited this report and the viva notes.",
+  ],
+  "Sharma Piyush": [
+    "Designed the FPGA wrapper `fpga/fpga_top.v`: reset synchroniser, slow-step clock enable and LED display of a0 / PC.",
+    "Wrote the Basys-3 pin constraints (`fpga/basys3.xdc`) and the Vivado batch flow (`fpga/vivado_build.tcl`).",
+    "Prepared the presentation slides, the video script and the step-by-step live-demo script (`scripts/demo.sh`).",
+  ],
+  "Gourav Tanwar": [
+    "Implemented the Program Counter (`pc.v`) with synchronous reset and clock enable.",
+    "Implemented the 32 × 32 register file (`reg_file.v`) with two asynchronous read ports, one synchronous write port and x0 hard-wired to zero.",
+    "Implemented the instruction memory (`instr_mem.v`) and data memory (`data_mem.v`) and the immediate generator (`imm_gen.v`) for the I, S and B formats.",
+    "Wrote the unit testbenches `tb_reg_file.v` and `tb_imm_gen.v`.",
+  ],
+  "Saransh Singh Tomar": [
+    "Implemented the ALU (`alu.v`) with the zero flag, the branch unit (`branch_unit.v`), the adders (`adder.v`) and the 2:1 multiplexers (`mux2.v`).",
+    "Wrote the ALU unit testbench `tb_alu.v` (directed and random vectors) and the control-unit testbench `tb_control_unit.v`.",
+    "Developed the mini RV32I assembler (`tools/assembler.py`) and wrote the seven test programs in `programs/`.",
+  ],
+  "Rachit Singh": [
+    "Developed the golden reference model (`tools/iss.py`) used to generate the expected results.",
+    "Wrote the self-checking system testbench `tb_rv32i_cpu.v` with coverage counters, trace log and the stall test, and the automation script `scripts/run_all.sh`.",
+    "Designed the mutation test (`scripts/mutation_test.sh`) and produced the waveform images (`tools/vcd_plot.py`).",
+    "Carried out the performance analysis and the multi-cycle baseline comparison (`tools/perf_analysis.py`).",
+  ],
+};
+C_.push(
+  H1("11. Team Members and Individual Contributions"),
+  P(`The project was carried out by Team ${TEAM.name} (Group ${TEAM.group}) of the ${TEAM.programme} programme, ${TEAM.institute}. The work was divided by function so that each member owned a clear part of the design or its verification; all members reviewed the integrated design, took part in testing and contributed to the report and the presentation.`),
+  ...TABLE("Team members and their roles", ["Name", "Roll No.", "Email", "Main responsibility"],
+    TEAM.members.map((m) => [m.name, m.roll, m.email, m.role]), [2.1, 1.5, 3.5, 3.4], { size: 18 }),
+);
+TEAM.members.forEach((m, i) => {
+  C_.push(H2(`11.${i + 1} ${m.name} (${m.roll})`), P(`**Role:** ${m.role}.`), ...WORK[m.name].map((w) => B(w)));
+});
+C_.push(
+  H2(`11.${TEAM.members.length + 1} Collaboration`),
+  P(`The source code, reports and slides are maintained in the shared GitHub repository ${TEAM.repo}, where each member pushed his part from his own account. Design decisions such as the control-signal encoding, the memory interface and the HALT convention were agreed in team meetings, and every change was checked with the complete regression suite (` + "`scripts/run_all.sh`" + `) before it was committed.`),
+);
+C_.push(
+  H1("References"),
   N("A. Waterman and K. Asanović (eds.), *The RISC-V Instruction Set Manual, Volume I: Unprivileged ISA*, RISC-V International."),
   N("D. A. Patterson and J. L. Hennessy, *Computer Organization and Design: The Hardware/Software Interface, RISC-V Edition*, Morgan Kaufmann."),
   N("S. Harris and D. Harris, *Digital Design and Computer Architecture: RISC-V Edition*, Morgan Kaufmann."),
@@ -513,7 +592,7 @@ C_.push(
 
 // ---------------------------------------------------------------- sections
 const mkHeader = () => new Header({ children: [new Paragraph({ alignment: AlignmentType.RIGHT, border: { bottom: { style: BorderStyle.SINGLE, size: 4, color: "8A949E", space: 4 } },
-  children: [new TextRun({ text: "Single-Cycle RV32I Processor in Verilog – Project Report", size: 18, color: "555555" })] })] });
+  children: [new TextRun({ text: "Team Black Coffee – Single-Cycle RV32I Processor in Verilog", size: 18, color: "555555" })] })] });
 const mkFooter = () => new Footer({ children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: "Page ", size: 18 }), new TextRun({ children: [PageNumber.CURRENT], size: 18 })] })] });
 const SECTIONS = [];
 let cur = [], orient = "portrait";
@@ -532,7 +611,7 @@ flush();
 
 // ---------------------------------------------------------------- document
 const doc = new Document({
-  creator: "[Student Name]",
+  creator: "Team Black Coffee",
   title: "Single-Cycle RV32I Processor - Project Report",
   styles: {
     default: { document: { run: { font: FONT, size: 24 } } },

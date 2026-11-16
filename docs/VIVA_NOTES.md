@@ -6,9 +6,9 @@ usually ask. Read this together with the datapath diagram
 
 ## The project in 30 seconds
 
-"I designed a 32-bit RISC-V processor in Verilog that runs 10 instructions:
+"We, Team Black Coffee, designed a 32-bit RISC-V processor in Verilog that runs 10 instructions:
 ADD, SUB, AND, OR, XOR, ADDI, LW, SW, BEQ and BNE. It is single-cycle, so
-every instruction finishes in one clock cycle and the CPI is 1. I verified it
+every instruction finishes in one clock cycle and the CPI is 1. We verified it
 with a self-checking testbench against a Python reference model on 7 programs,
 and synthesized it: it uses about 638 LUTs on an Artix-7 and runs at 44 MHz on
 an ECP5 FPGA. The slowest instruction, LW, decides the clock period."

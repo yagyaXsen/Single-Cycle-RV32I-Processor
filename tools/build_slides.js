@@ -30,7 +30,7 @@ const HEX = THEME.colors;
 const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE"; // 13.33 x 7.5
 pres.title = "Single-Cycle RV32I Processor";
-pres.author = "[Student Name]";
+pres.author = "Team Black Coffee";
 pres.theme = { headFontFace: THEME.headFontFace, bodyFontFace: THEME.bodyFontFace };
 const C = pres.SchemeColor;
 
@@ -94,10 +94,34 @@ let s = pres.addSlide({ masterName: "TITLE_DARK", sectionTitle: "Introduction" }
 s.addText("Single-Cycle RV32I Processor in Verilog", { placeholder: "title" });
 s.addText([
   { text: "Design, verification and FPGA synthesis", options: { breakLine: true } },
-  { text: "Modern Computer Architecture – Project 1   |   [Student Name], [Roll Number]", options: { breakLine: true, fontSize: 15 } },
-  { text: "Guide: [Guide Name]   |   MCA, [Institute Name]", options: { fontSize: 15 } },
+  { text: "Modern Computer Architecture – Project 1   |   Team Black Coffee (Group B)", options: { breakLine: true, fontSize: 15 } },
+  { text: "Newton School of Technology, Rishihood University", options: { fontSize: 15 } },
 ], { placeholder: "body" });
-s.addNotes("Introduce yourself and the project: a 32-bit RISC-V processor that executes ten RV32I instructions, each in one clock cycle, written in Verilog, verified in simulation and synthesized for FPGAs.");
+s.addNotes("Introduce the team and the project: a 32-bit RISC-V processor that executes ten RV32I instructions, each in one clock cycle, written in Verilog, verified in simulation and synthesized for FPGAs.");
+
+
+// ================================================================ 1b Team
+s = content("Team Black Coffee", "Introduction");
+const TEAM = [
+  ["Alok Kumar", "2401010058", "Team lead: datapath design, control unit, integration, synthesis, report"],
+  ["Sharma Piyush", "2401010437", "FPGA wrapper, Basys-3 constraints, Vivado flow, presentation and demo"],
+  ["Gourav Tanwar", "2401010173", "PC, register file, instruction / data memory, immediate generator"],
+  ["Saransh Singh Tomar", "2401010418", "ALU, branch unit, adders and MUXes, assembler, test programs"],
+  ["Rachit Singh", "2401010364", "Golden model, system testbench, mutation test, waveforms, performance"],
+];
+const tw = 2.3, gap = 0.15;
+TEAM.forEach(([name, roll, work], i) => {
+  const x = 0.6 + i * (tw + gap), y = 1.55;
+  const col = [C.accent1, C.accent2, C.accent3, C.accent4, C.text2][i];
+  const ini = name.split(" ").filter(Boolean).map((w) => w[0]).slice(0, 2).join("");
+  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w: tw, h: 4.9, rectRadius: 0.08, fill: { color: C.background2 }, line: { color: C.background2 }, objectName: `member ${i + 1} card` });
+  s.addShape(pres.shapes.OVAL, { x: x + tw / 2 - 0.5, y: y + 0.3, w: 1.0, h: 1.0, fill: { color: col }, line: { color: col }, objectName: `member ${i + 1} badge` });
+  s.addText(ini, { x: x + tw / 2 - 0.5, y: y + 0.3, w: 1.0, h: 1.0, fontSize: 24, bold: true, color: C.background1, align: "center", valign: "middle", margin: 0, isTextBox: true, objectName: `member ${i + 1} initials` });
+  s.addText(name, { x: x + 0.12, y: y + 1.45, w: tw - 0.24, h: 0.75, fontSize: 17, bold: true, color: C.text2, align: "center", valign: "middle", margin: 0, isTextBox: true, objectName: `member ${i + 1} name` });
+  s.addText(roll, { x: x + 0.12, y: y + 2.2, w: tw - 0.24, h: 0.35, fontSize: 14, color: "5A6670", align: "center", margin: 0, isTextBox: true, objectName: `member ${i + 1} roll` });
+  s.addText(work, { x: x + 0.15, y: y + 2.7, w: tw - 0.3, h: 2.05, fontSize: 14, color: C.text1, align: "left", valign: "top", margin: 0, isTextBox: true, objectName: `member ${i + 1} work` });
+});
+s.addNotes("Each member owned one part of the design or its verification; all of us tested the integrated CPU and worked on the report. Details are in Chapter 11 of the report.");
 
 // ================================================================ 2 Objective
 s = content("Objective: a working CPU for 10 RV32I instructions", "Introduction");

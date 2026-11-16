@@ -35,9 +35,19 @@ reference model and synthesized for FPGA.
 | **Final technical report** | `docs/report/RV32I_Project_Report.docx` and `.pdf` |
 | **Presentation for the live demo** | `docs/presentation/RV32I_Presentation.pptx` (with speaker notes) |
 
-> Before submitting, open the report and slides and replace the placeholders
-> `[Student Name]`, `[Roll Number]`, `[Guide Name]`, `[Institute Name]`, etc.
-> In Word, right-click the Table of Contents → *Update Field* after editing.
+## Team Black Coffee (Group B)
+
+Newton School of Technology, Rishihood University — B.Tech CS & AI
+
+| Name | Roll No. | Main responsibility |
+|---|---|---|
+| Alok Kumar | 2401010058 | Team lead – datapath design, control unit, integration, synthesis, report |
+| Sharma Piyush | 2401010437 | FPGA wrapper, Basys-3 constraints, Vivado flow, presentation and demo |
+| Gourav Tanwar | 2401010173 | PC, register file, instruction / data memory, immediate generator |
+| Saransh Singh Tomar | 2401010418 | ALU, branch unit, adders and MUXes, assembler, test programs |
+| Rachit Singh | 2401010364 | Golden model, system testbench, mutation test, waveforms, performance |
+
+Details of each member's work: report Chapter 11.
 
 ---
 
